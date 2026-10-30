@@ -7,12 +7,13 @@ The dependency versions are intentionally outdated so the scanner can show
 real OSV evidence and a blocked release decision:
 
 - `lodash@4.17.20`
-- `jsonwebtoken@8.5.1`
 
-Do not install the dependencies for the judge demo. ShipTested reads the
-committed exact-version manifests without executing repository code.
+The URL scan reads committed exact-version manifests without executing code.
+Repair verification installs dependencies in isolated sandboxes with lifecycle
+scripts disabled, then turns off networking before running the tests.
 
-The repository smoke test is independent of those packages:
+The two tests exercise lodash's grouping, totals and deduplication behavior.
+Run them only in the isolated repair sandbox for this intentionally outdated baseline:
 
 ```sh
 npm test
@@ -20,10 +21,12 @@ npm test
 
 The expected judge flow is:
 
-1. Open this repository on GitHub and show its first scan.
+1. Open this repository on GitHub and show the pinned baseline commit.
 2. Submit the repository URL to ShipTested.
 3. Review the pinned commit, dependency findings, OSV evidence and coverage.
-4. Stop at the human approval boundary; do not merge or deploy a repair.
+4. Prepare the lodash repair and run baseline and patched sandbox tests.
+5. Review the dependency diff and fresh advisory scan, then approve a draft PR.
+6. Leave the draft unmerged. This fixture is not a deployable application.
 
 Optional Nemotron explanations are shown only when the ShipTested deployment
 has its Nebius provider configuration enabled. Provider output must enrich the

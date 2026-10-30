@@ -8,7 +8,6 @@
     "test": "node --test"
   },
   "dependencies": {
-    "jsonwebtoken": "8.5.1",
     "lodash": "4.17.20"
   }
 }
