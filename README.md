@@ -7,7 +7,6 @@ The dependency versions are intentionally outdated so the scanner can show
 real OSV evidence and a blocked release decision:
 
 - `lodash@4.17.20`
-- `axios@0.21.1`
 - `jsonwebtoken@8.5.1`
 
 Do not install the dependencies for the judge demo. ShipTested reads the
